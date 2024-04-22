@@ -2,7 +2,7 @@
 // informando a situação da pessoa (taxas e etc)
 
 float altura, peso, imc;
-
+char sex;
 int option;
 
 do
@@ -29,32 +29,65 @@ do
         }
     } while (altura <= 0);
 
+    do
+    {
+        Console.WriteLine("Sexo (M/F):");
+        sex = char.Parse(Console.ReadLine());
+    } while (sex != 'M' && sex != 'F');
+
     altura /= 100;
     imc = peso / (altura * altura);
 
     Console.WriteLine($"\nseu IMC: {imc}");
 
-    if(imc < 18.5){
-        Console.WriteLine("Classificação: abaixo do peso\n");
-    } else if(imc < 25)
+    if (sex == 'M')
     {
-        Console.WriteLine("Classificação: peso ideal\n");
-    } else if(imc < 30)
-    {
-        Console.WriteLine("Classificação: sobrepeso\n");
-    } else if(imc < 35)
-    {
-        Console.WriteLine("Classificação: obesidade grau 1\n");
-    } else if(imc < 40)
-    {
-        Console.WriteLine("Classificação: obesidade grau 2\n");
+        if (imc < 20)
+        {
+            Console.WriteLine("Classificação: abaixo do peso\n");
+        }
+        else if (imc < 25)
+        {
+            Console.WriteLine("Classificação: peso ideal\n");
+        }
+        else if (imc < 30)
+        {
+            Console.WriteLine("Classificação: sobrepeso\n");
+        }
+        else if (imc < 40)
+        {
+            Console.WriteLine("Classificação: obesidade moderada\n");
+        }
+        else
+        {
+            Console.WriteLine("Classificação: obesidade mórbida\n");
+        }
     }
     else
     {
-        Console.WriteLine("Classificação: obesidade grau 3\n");
+        if (imc < 19)
+        {
+            Console.WriteLine("Classificação: abaixo do peso\n");
+        }
+        else if (imc < 24)
+        {
+            Console.WriteLine("Classificação: peso ideal\n");
+        }
+        else if (imc < 29)
+        {
+            Console.WriteLine("Classificação: sobrepeso\n");
+        }
+        else if (imc < 39)
+        {
+            Console.WriteLine("Classificação: obesidade moderada\n");
+        }
+        else
+        {
+            Console.WriteLine("Classificação: obesidade mórbida\n");
+        }
     }
 
-    do
+        do
     {
         Console.WriteLine("\nDeseja sair?");
         Console.WriteLine("1 - sim");
